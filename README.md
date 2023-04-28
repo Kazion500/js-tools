@@ -77,4 +77,4 @@ We welcome contributions to this project. To contribute, please fork this reposi
 
 #### Email: [Patrick](mailto:patrickckabwe@gmail.com)
 
-#### Full Name: [Patrick Kabwe](github.com/Kazion500)
+#### Full Name: [Patrick Kabwe](https://github.com/Kazion500)
