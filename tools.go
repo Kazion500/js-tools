@@ -1,4 +1,4 @@
-package toolkit
+package js_tools
 
 import (
 	"encoding/json"
@@ -7,23 +7,23 @@ import (
 type AnyType interface {
 }
 
-type Tool[T any] interface {
+type JSON[T any] interface {
 	Stringify(any) (string, error)
 	Parse(string, T) (T, error)
 }
 
-type tool[T AnyType] struct{}
+type jsont[T AnyType] struct{}
 
-func New[T AnyType]() Tool[T] {
-	return &tool[T]{}
+func NewJSON[T AnyType]() JSON[T] {
+	return &jsont[T]{}
 }
 
-func (t *tool[T]) Stringify(data any) (string, error) {
+func (t *jsont[T]) Stringify(data any) (string, error) {
 	result, err := json.Marshal(data)
 	return string(result), err
 }
 
-func (t *tool[T]) Parse(js string, v T) (T, error) {
+func (t *jsont[T]) Parse(js string, v T) (T, error) {
 	stringBytes := []byte(js)
 	err := json.Unmarshal(stringBytes, &v)
 	return v, err

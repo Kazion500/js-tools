@@ -1,4 +1,4 @@
-package toolkit
+package js_tools
 
 import (
 	"testing"
@@ -30,7 +30,7 @@ func TestTool_Stringify(t *testing.T) {
 		},
 	}
 
-	tool := New[User]()
+	tool := NewJSON[User]()
 
 	for _, valuesToStringify := range valuesToStringifyTests {
 		_, err := tool.Stringify(valuesToStringify.value)
@@ -62,7 +62,7 @@ func TestTool_Parse(t *testing.T) {
 		},
 	}
 
-	tool := New[User]()
+	tool := NewJSON[User]()
 
 	for _, jsonToParse := range jsonToParseTests {
 		user2, err := tool.Parse(jsonToParse.json, User{})
