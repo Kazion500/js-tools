@@ -36,7 +36,7 @@ type JSON[T AnyType] interface {
 
 The `jsont` and `jskit` structs implement the JSON and JSKit interfaces respectively. The NewJSKit function returns a new JSKit interface.
 
-Examples
+### Examples
 Here's an example of how to use this module to stringify and parse JSON data:
 
 ```golang
