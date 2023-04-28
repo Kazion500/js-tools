@@ -1,3 +1,3 @@
-module github.com/kazion500/js-tools
+module github.com/kazion500/jskit
 
 go 1.19

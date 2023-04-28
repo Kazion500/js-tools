@@ -1,4 +1,4 @@
-package js_tools
+package jskit
 
 import (
 	"testing"
@@ -30,10 +30,11 @@ func TestTool_Stringify(t *testing.T) {
 		},
 	}
 
-	tool := NewJSON[User]()
+	jskit := NewJSKit[User]()
+	JSON := jskit.JSON()
 
 	for _, valuesToStringify := range valuesToStringifyTests {
-		_, err := tool.Stringify(valuesToStringify.value)
+		_, err := JSON.Stringify(valuesToStringify.value)
 
 		if err != nil {
 			t.Errorf("Failed to Parse %v", valuesToStringify.value)
@@ -62,16 +63,40 @@ func TestTool_Parse(t *testing.T) {
 		},
 	}
 
-	tool := NewJSON[User]()
+	jskit := NewJSKit[User]()
+	JSON := jskit.JSON()
 
 	for _, jsonToParse := range jsonToParseTests {
-		user2, err := tool.Parse(jsonToParse.json, User{})
+		user2, err := JSON.Parse(jsonToParse.json, User{})
 		if err != nil {
 			t.Errorf("Failed to Parse %v", jsonToParse.json)
 		}
 
 		if user2.Name != jsonToParse.expectedValue {
 			t.Errorf("Name is not %v", jsonToParse.expectedValue)
+		}
+	}
+}
+
+func TestTool_ToString(t *testing.T) {
+
+	BytesToTest := []struct {
+		value         []byte
+		expectedValue interface{}
+	}{
+		{
+			value:         []byte("How are you"),
+			expectedValue: "How are you",
+		},
+	}
+
+	jskit := NewJSKit[User]()
+
+	for _, byte := range BytesToTest {
+		str := jskit.ToString(byte.value)
+
+		if str != byte.expectedValue {
+			t.Errorf("Name is not %v", byte.expectedValue)
 		}
 	}
 }
