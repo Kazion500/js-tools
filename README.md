@@ -55,13 +55,13 @@ type Person struct {
 func main() {
     person := Person{"John Doe", 30}
     jskit := jskit.NewJSKit[Person]()
-    jsonString, _ := jskit.JSON().Stringify(person)
+    jsonString, _ := jskit.JSON.Stringify(person)
     fmt.Println(jsonString)
 
     // Output: {"name":"John Doe","age":30}
 
     var p Person
-    jskit.JSON().Parse(jsonString, &p)
+    jskit.JSON.Parse(jsonString, &p)
     fmt.Println(p.Name)
 
     // Output: John Doe
