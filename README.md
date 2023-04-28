@@ -44,7 +44,7 @@ package main
 
 import (
     "fmt"
-    "github.com/username/repo/jskit"
+     "github.com/Kazion500/jskit"
 )
 
 type Person struct {
